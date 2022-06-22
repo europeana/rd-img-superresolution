@@ -2,3 +2,4 @@ requests
 fire
 pandas
 pyeuropeana
+ISR
