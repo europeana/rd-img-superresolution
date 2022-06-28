@@ -12,22 +12,14 @@ def main(**kwargs):
     input = kwargs.get("input")
     output = kwargs.get("output")
 
-    print(output)
-
     Path(output).parent.mkdir(exist_ok = True, parents = True)
 
     model = RDN(weights='noise-cancel')
 
     img = Image.open(input)
-
     sr_img = model.predict(np.array(img))
-
     sr_img = Image.fromarray(sr_img)
     sr_img.save(output)
-
-
-
-
 
     return
 
