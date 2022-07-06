@@ -1,0 +1,12 @@
+version: "3.9"
+
+   
+services:
+  ml_model:
+    build: ./model-api
+    command: python3 api.py
+    volumes:
+      - ./model-api:/code
+
+    ports:
+      - "5050:5050"

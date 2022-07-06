@@ -18,6 +18,16 @@ Once you are in the container execute the following command to enhance an image:
 
 `python3 apply_model.py --input ../superresolution_data/inputs/[ph]2048087[ph]ProvidedCHO_British_Museum_and_The_Portable_Antiquities_Scheme_YORYM_FFFA17.jpg --output ../superresolution_data/outputs/enhanced_image.jpg`
 
+cd model-api
+
+sudo docker build .
+
+sudo docker run -p 127.0.0.1:5050:5050/tcp -v /home/jcejudo/superresolution_data:/superresolution_data 69b57eda397d 
+
+pip install Fire
+
+python client.py --input ../superresolution_data/inputs/[ph]2048087[ph]ProvidedCHO_British_Museum_and_The_Portable_Antiquities_Scheme_YORYM_FFFA17.jpg --output ../superresolution_data/outputs/enhanced_img.jpg
+
 
 # Harvesting data
 

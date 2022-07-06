@@ -12,11 +12,12 @@ RUN apt-get install -y python3-setuptools
 RUN apt-get install -y python3-pip
 
 RUN pip install fire
-
+RUN pip install Flask
 
 RUN git clone https://github.com/joseed-europeana/image-super-resolution.git
 RUN python3 image-super-resolution/setup.py install
 
 COPY . /code
+CMD python3 api.py
 
 
