@@ -1,11 +1,8 @@
 # Image Superresolution
 
-## Deployment as an API
+## Deployment
 
-
-Create a `superresolution_data` folder in the parent directory of this repository with two folders, `inputs` and `outputs`. Place the images to enhance in `inputs`. 
-
-Clone the repository 
+Create a `superresolution_data` folder in the parent directory of this repository with two folders, `inputs` and `outputs`. Place the images to enhance in `inputs`. Clone this repository and go to the directory `model-api`.
 
 `cd model-api`
 
@@ -13,34 +10,14 @@ Build the docker image
 
 `sudo docker build . --no-cache`
 
-If successful, a docker image should be created with a certain id. To see the id of all your docker images run `sudo docker images`.
-
-Run the container in interactive mode and mounting as a volume a directory of the host machine to the `superresolution_data` folder in the container. Use the image id obtained before
+If successful, a docker image should be created with a certain id. To see the id of all your docker images run `sudo docker images`. Run the container mounting the `superresolution_data` directory previously created in the container
 
 `sudo docker run -p 127.0.0.1:5050:5050/tcp -v /home/jcejudo/superresolution_data:/superresolution_data <your_image_id_here>`
 
-
-Client command line tool 
-
-The command line tool takes the path of an input image and the path of the enhanced file for the output. 
-
+The model api should run now in `http://0.0.0.0:5050/srapi`, and it accepts POST requests with a json body `{'input':'','output':''}` containing the input path for the low-resolution image and the output path for the enhanced version. We can test the api with the client command line tool, which takes the input and output paths as arguments. 
 
 `python client.py --input ../superresolution_data/inputs/[ph]2048087[ph]ProvidedCHO_British_Museum_and_The_Portable_Antiquities_Scheme_YORYM_FFFA17.jpg --output ../superresolution_data/outputs/enhanced_img.jpg` 
 
-
-
-
-
-
-
-
-cd model-api
-
-sudo docker build .
-
-sudo docker run -p 127.0.0.1:5050:5050/tcp -v /home/jcejudo/superresolution_data:/superresolution_data 69b57eda397d 
-
-python client.py --input ../superresolution_data/inputs/[ph]2048087[ph]ProvidedCHO_British_Museum_and_The_Portable_Antiquities_Scheme_YORYM_FFFA17.jpg --output ../superresolution_data/outputs/enhanced_img.jpg
 
 
 # Harvesting data

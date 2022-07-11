@@ -17,7 +17,11 @@ if __name__ == '__main__':
 
     api = SuperResAPI(f"http://0.0.0.0:5050/srapi")
     response = api.enhance(args.input,args.output)
+
     print(response)
+    #print(response.request.url)
+    #print(response.request.body)
+    #print(response.request.headers)
 
 
 
